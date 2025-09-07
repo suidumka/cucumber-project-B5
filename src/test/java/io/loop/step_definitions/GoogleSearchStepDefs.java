@@ -34,7 +34,7 @@ public class GoogleSearchStepDefs {
 
         assertEquals("No Match",  "Loop Academy - Google Search", actual);
     }
-
+    
     @When("user types {string} in the google search box and clicks enter")
     public void user_types_in_the_google_search_box_and_clicks_enter(String input) {
         googleSearchPage.searchBox.sendKeys(input + Keys.ENTER);
