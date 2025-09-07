@@ -36,4 +36,11 @@ public class DocuportConstants {
     //forgot password URL
     public static final String FORGOT_PASSWORD_URL = "https://beta.docuport.app/reset-password";
 
+    //waits
+    public static final int EXTRA_SMALL = 3;
+    public static final int SMALL = 5;
+    public static final int MEDIUM = 7;
+    public static final int LARGE = 10;
+    public static final int EXTRA_LARGE = 20;
+
 }

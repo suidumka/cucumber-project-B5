@@ -8,7 +8,7 @@ Feature: Google Search Functionality Title Validation
     When user types Loop Academy in the google search box and clicks enter
     Then user should be able to see Loop Academy - Google search in the google title
 
-  @google_search
+
   Scenario: Search functionality result title validation
     Given user is on Google search page
     When user types "Loop Academy" in the google search box and clicks enter
