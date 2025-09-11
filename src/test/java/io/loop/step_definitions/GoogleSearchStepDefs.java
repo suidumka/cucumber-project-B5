@@ -8,6 +8,7 @@ import io.loop.utilities.BrowsersUtils;
 import io.loop.utilities.ConfigurationReader;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -22,6 +23,7 @@ public class GoogleSearchStepDefs {
     @Given("user is on Google search page")
     public void user_is_on_google_search_page() {
         Driver.getDriver().get(ConfigurationReader.getProperties("google.url"));
+
     }
 
     @When("user types Loop Academy in the google search box and clicks enter")

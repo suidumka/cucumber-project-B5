@@ -33,12 +33,8 @@ public class LoginStepDefs {
         loginPage.passwordInput.sendKeys(DocuportConstants.PASSWORD_FOR_LOGIN);
     }
 
-    @When("user clicks login button")
-    public void user_clicks_login_button() {
-        loginPage.loginButton.click();
-    }
 
-    @Then("user should be able to see home page for client")
+    @Then("user clicks login button and user should be able to see home page for client")
     public void user_should_be_able_to_see_home_page_for_client() throws InterruptedException {
         Thread.sleep(3000);
         loginPage.continueButton.click();
