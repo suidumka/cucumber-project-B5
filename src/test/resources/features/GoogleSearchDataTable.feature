@@ -4,10 +4,12 @@ Feature: passing multiple parameters to the same step
   Scenario: Searching multiple items||
     Given  user is on Google search page
     Then user searches the following items
-    |cup|
-    |Suidum|
-    |Mac|
-    |Love Bishkek|
-    |Tom and Jerry|
+      | items         |
+      | loop academy  |
+      | cup           |
+      | Suidum        |
+      | Mac           |
+      | Love Bishkek  |
+      | Tom and Jerry |
     And we love Loop Academy
 
