@@ -1,6 +1,5 @@
 package io.loop.pages;
 
-import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
