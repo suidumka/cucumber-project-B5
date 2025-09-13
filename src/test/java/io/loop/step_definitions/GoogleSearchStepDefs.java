@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -62,23 +63,64 @@ public class GoogleSearchStepDefs {
         assertEquals("Expected capital city: " + capital + "does NOT match with actual: " + googleSearchPage.capitalName.getText(), capital, googleSearchPage.capitalName.getText() );
     }
 
+
+
+//    @Then("user searches the following items")
+//    public void user_searches_the_following_items(List<String> items) {
+//        for (String item : items) {
+//        /*    googleSearchPage.searchBox.clear();
+//            googleSearchPage.searchBox.sendKeys(item + Keys.ENTER);
+//            WebDriverWait wait = new WebDriverWait( Driver.getDriver(), Duration.ofSeconds(10));
+//            wait.until(ExpectedConditions.titleIs(item + " - Google Search"));
+//            assertEquals("Expected does NOT match actual", item, googleSearchPage.searchBox.getText());
+//            BrowsersUtils.takeScreenShot();*/
+//        }
+//
+//        items.forEach(p-> {
+//            googleSearchPage.searchBox.clear();
+//            googleSearchPage.searchBox.sendKeys(p + Keys.ENTER);
+//            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+//            wait.until(ExpectedConditions.titleIs(p + " - Google Search"));
+//            assertEquals("Expected does not match the actual", p + " - Google Search", Driver.getDriver().getTitle());
+//           BrowsersUtils.takeScreenShot();
+//        });
+//
+//    }
+
+    @Then("user searches the following items")
+    public void user_searches_the_following_items(List<Map<String, String>> items) {
+
+        for (Map<String, String> item : items){
+            System.out.println("item.get(\"items\") = " + item.get("items"));
+
+            googleSearchPage.searchBox.clear();
+            googleSearchPage.searchBox.sendKeys(item.get("items") + Keys.ENTER);
+            WebDriverWait wait = new WebDriverWait( Driver.getDriver(), Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.titleIs(item.get("items") + " - Google Search"));
+            assertEquals("Expected does NOT match actual", item.get("items"), googleSearchPage.searchBox.getText());
+            BrowsersUtils.takeScreenShot();
+        }
+    }
     @Then("we love Loop Academy")
     public void we_love_loop_academy() {
         System.out.println("We love Loop Academy");
     }
 
-    @Then("user searches the following items")
-    public void user_searches_the_following_items(List<String> items) {
-        for (String item : items) {
-            googleSearchPage.searchBox.clear();
-            googleSearchPage.searchBox.sendKeys(item + Keys.ENTER);
-            WebDriverWait wait = new WebDriverWait( Driver.getDriver(), Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.titleIs(item + " - Google Search"));
-            assertEquals("Expected does NOT match actual", item, googleSearchPage.searchBox.getText());
-            BrowsersUtils.takeScreenShot();
-        }
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
