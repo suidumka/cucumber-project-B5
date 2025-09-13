@@ -1,0 +1,9 @@
+11.09.2025 22:14:04 INFO  PracticeDefs:29 - User is on homepage
+11.09.2025 22:14:04 INFO  PracticeDefs:54 - Validation of the price for: Phones, for Product: Samsung galaxy s6 expected: 360 - actual: 360
+11.09.2025 22:14:04 INFO  PracticeDefs:54 - Validation of the price for: Phones, for Product: Nokia lumia 1520 expected: 820 - actual: 820
+11.09.2025 22:14:04 INFO  PracticeDefs:54 - Validation of the price for: Phones, for Product: Nexus 6 expected: 650 - actual: 650
+11.09.2025 22:14:04 INFO  PracticeDefs:54 - Validation of the price for: Laptops, for Product: Sony vaio i5 expected: 790 - actual: 790
+11.09.2025 22:14:04 INFO  PracticeDefs:54 - Validation of the price for: Laptops, for Product: Sony vaio i7 expected: 790 - actual: 790
+11.09.2025 22:14:04 INFO  PracticeDefs:54 - Validation of the price for: Laptops, for Product: MacBook air expected: 700 - actual: 700
+11.09.2025 22:14:04 INFO  PracticeDefs:54 - Validation of the price for: Monitors, for Product: Apple monitor 24 expected: 400 - actual: 400
+11.09.2025 22:14:04 INFO  PracticeDefs:54 - Validation of the price for: Monitors, for Product: ASUS Full HD expected: 230 - actual: 230
