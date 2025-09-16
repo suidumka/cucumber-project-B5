@@ -7,6 +7,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Driver {
 
@@ -32,11 +34,24 @@ public class Driver {
      * Singleton pattern
      * @return
      */
-    public static WebDriver getDriver() {
-        if (driver == null) {
-            String browserType = ConfigurationReader.getProperties("browser");
-            ChromeOptions options = new ChromeOptions();
 
+    public static WebDriver getDriver() {
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+        prefs.put("profile.password_manager_leak_detection", false);
+        prefs.put("autofill.profile_enabled", false);
+        prefs.put("autofill.credit_card_enabled", false);
+
+        String browserType = ConfigurationReader.getProperties("browser");
+        ChromeOptions options = new ChromeOptions();
+
+        options.setExperimentalOption("prefs", prefs);
+        options.addArguments(
+                "--disable-features=PasswordLeakDetection,PasswordManagerOnboarding"
+        );
+        options.addArguments("--disable-features=HttpsFirstMode,HttpsFirstModeV2");
+        if (driver == null) {
             switch (browserType.toLowerCase()) {
                 case "chrome" -> {
                     options.addArguments("--disable-blink-features=AutomationControlled");
@@ -45,12 +60,12 @@ public class Driver {
                 case "firefox" -> driver = new FirefoxDriver();
                 case "safari" -> driver = new SafariDriver();
             }
+            assert driver != null;
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         }
         return driver;
     }
-
 
     public static void closeDriver() {
         if (driver != null) {
