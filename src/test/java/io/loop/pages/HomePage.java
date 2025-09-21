@@ -16,6 +16,7 @@ public class HomePage {
     public WebElement logo;
 
 
+
     @FindBy (xpath="//button[@type='submit']")
     public WebElement continueButton;
 }
