@@ -15,7 +15,7 @@ public class ProductPage {
     }
 
     public void clickCategory(String category) {
-        WebElement cat = Driver.getDriver().findElement(By.xpath("//a[contains(.,'" +category+"')]"));
+        WebElement cat = Driver.getDriver().findElement(By.xpath("//a[contains(.,'" + category + "')]"));
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(cat)).click();
 

@@ -7,11 +7,12 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {"html:target/html-reports/cucumber-report.html",
-                "json:target/json-reports/json-report.json"},
+                "json:target/json-reports/json-report.json",
+                "rerun:target/rerun.txt"},
         features = "src/test/resources/features",
         glue = "io/loop/step_definitions",
         dryRun = false,
-        tags = "@mapListProduct",
+        tags = "@smoke",
         monochrome = true
        // publish = true //creates a report - which is valid for 24h
 

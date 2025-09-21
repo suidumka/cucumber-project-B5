@@ -69,7 +69,7 @@ public class ProductDefs {
 
             // assertion
             assertEquals("Expected does not match the actutal", expectedPrice, actualPrice);
-            LOG.info("Validation pf the price for: " + productDetail.get(0) + ", for product: " + productDetail.get(1) + " expected price: " + expectedPrice + " - actual price: " + actualPrice);
+            LOG.info("Validation of the price for: " + productDetail.get(0) + ", for product: " + productDetail.get(1) + " expected price: " + expectedPrice + " - actual price: " + actualPrice);
 
         }
     }
