@@ -7,8 +7,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Driver {
 
@@ -16,14 +19,27 @@ public class Driver {
     Creating a private constructor, so we are closing access to the object of this class from outside the class
      */
 
-    private Driver(){}
+    private Driver() {
+    }
 
     /*
     Making our driver instance private, so it is not reachable from outside the class
     We make it static because we want it to run before everything else, and we will use it in a static method
      */
 
-    private static WebDriver driver;
+    //private static WebDriver driver;
+    // implement threadLocal to archive multi thread locally
+    private static InheritableThreadLocal <WebDriver> driverPool = new InheritableThreadLocal<>();
+
+    static {
+        Logger root = Logger.getLogger("");
+        root.setLevel(Level.SEVERE);
+        Arrays.stream(root.getHandlers()).forEach(h -> h.setLevel(Level.SEVERE));
+
+        Logger.getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
+        Logger.getLogger("org.openqa.selenium.devtools").setLevel(Level.SEVERE);
+        Logger.getLogger("org.openqa.selenium.devtools.CdpVersionFinder").setLevel(Level.SEVERE);
+    }
 
 
     /*
@@ -32,6 +48,7 @@ public class Driver {
 
     /**
      * Singleton pattern
+     *
      * @return
      */
 
@@ -51,26 +68,26 @@ public class Driver {
                 "--disable-features=PasswordLeakDetection,PasswordManagerOnboarding"
         );
         options.addArguments("--disable-features=HttpsFirstMode,HttpsFirstModeV2");
-        if (driver == null) {
+        if (driverPool.get() == null) {
             switch (browserType.toLowerCase()) {
                 case "chrome" -> {
                     options.addArguments("--disable-blink-features=AutomationControlled");
-                    driver = new ChromeDriver(options);
+                    driverPool.set(new ChromeDriver(options));
                 }
-                case "firefox" -> driver = new FirefoxDriver();
-                case "safari" -> driver = new SafariDriver();
+                case "firefox" -> driverPool.set(new FirefoxDriver());
+                case "safari" -> driverPool.set(new SafariDriver());
             }
-            assert driver != null;
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            //assert driverPool != null;
+            driverPool.get().manage().window().maximize();
+            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         }
-        return driver;
+        return driverPool.get();
     }
 
     public static void closeDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null; // we assign it back to null so that next time we call getDriver(), a new instance will be created
+        if (driverPool.get() != null) {
+            driverPool.get().quit();
+            driverPool.remove(); // we assign it back to null so that next time we call getDriver(), a new instance will be created
         }
     }
 }

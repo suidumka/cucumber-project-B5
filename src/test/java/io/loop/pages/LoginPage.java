@@ -1,6 +1,9 @@
 package io.loop.pages;
 
+import io.loop.utilities.BrowsersUtils;
+import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -24,4 +27,22 @@ public class LoginPage {
 
     @FindBy (xpath="//button[@type='submit']")
     public WebElement continueButton;
+
+    /**
+     * Logins to docuport
+     * @param username
+     * @param password
+     * @author SJ
+     */
+    public void loginDocuport(String username, String password) throws InterruptedException {
+        BrowsersUtils.waitForClickable(loginButton, DocuportConstants.LARGE);
+        usernameInput.clear();
+        usernameInput.sendKeys(username);
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
+        loginButton.click();
+        Thread.sleep(3000);
+     /*   if(BrowsersUtils.waitForVisibility(continueButton,10).isDisplayed());
+        loginButton.click();*/
+    }
 }

@@ -1,9 +1,9 @@
 Feature: Docuport Login Logout Feature
 
   Background:
-    Given
+    Given user is on Docuport login page
 
-
+  @smoke
   Scenario: Login as a client
     #Given user is on Docuport login page
     When user enters username for client
@@ -19,7 +19,7 @@ Feature: Docuport Login Logout Feature
     And user clicks login button
     Then user should be able to see home page for employee
 
-
+  @smoke
   Scenario: Login as a advisor
     #Given user is on Docuport login page
     When user enters username for advisor
@@ -27,10 +27,17 @@ Feature: Docuport Login Logout Feature
     And user clicks login button
     Then user should be able to see home page for advisor
 
-
+  @smoke
   Scenario: Login as a supervisor
    # Given user is on Docuport login page
     When user enters username for supervisor
     And user enters password for supervisor
     And user clicks login button
     Then user should be able to see home page for supervisor
+
+  @dataTableLogin @smoke
+  Scenario: Login as a client map practice
+    When user enters credentials
+      | username | b1g1_client@gmail.com |
+      | password | Group1                |
+    Then user should be able to see home page for client
