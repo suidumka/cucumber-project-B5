@@ -88,7 +88,7 @@ public class BrowsersUtils {
 
         WebElement element = Driver.getDriver().findElement(By.xpath("//a[text()='" + nameOfPage + "']"));
 
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(DocuportConstants.LARGE));
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 

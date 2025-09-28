@@ -1,5 +1,6 @@
 package io.loop.pages;
 
+import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -16,7 +17,7 @@ public class ProductPage {
 
     public void clickCategory(String category) {
         WebElement cat = Driver.getDriver().findElement(By.xpath("//a[contains(.,'" + category + "')]"));
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(DocuportConstants.LARGE));
         wait.until(ExpectedConditions.elementToBeClickable(cat)).click();
 
     }

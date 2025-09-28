@@ -6,6 +6,23 @@ public class POM {
     private GoogleSearchPage googleSearchPage;
     private ProductPage productPage;
     private HomePage homePage;
+    private ReceivedDocsPage receivedDocsPage;
+    private LeftNavigatePage leftNavigatePage;
+
+
+    public LeftNavigatePage getLeftNavigatePage() {
+        if (leftNavigatePage == null) {
+            leftNavigatePage = new LeftNavigatePage();
+        }
+        return leftNavigatePage;
+    }
+
+    public ReceivedDocsPage getReceivedDocsPage() {
+        if (receivedDocsPage == null) {
+            receivedDocsPage = new ReceivedDocsPage();
+        }
+        return receivedDocsPage;
+    }
 
 
     public LoginPage getLoginPage() {
