@@ -1,4 +1,1 @@
-21.09.2025 14:32:10 INFO  ProductDefs:109 - Expected price: 790 - actual: 790
-21.09.2025 14:32:10 INFO  ProductDefs:109 - Expected price: 700 - actual: 700
-21.09.2025 14:32:10 INFO  ProductDefs:109 - Expected price: 230 - actual: 230
-21.09.2025 14:32:10 INFO  ProductDefs:109 - Expected price: 400 - actual: 400
+26.09.2025 00:25:21 ERROR ExcelUtils:33 - /Users/nsh/Documents/Repo2024/cucumber-project-b5/src/test/resources/Book1.xlsx (No such file or directory): happened while accessing the excel file
