@@ -23,7 +23,7 @@ public class ProductPage {
 
     public String getProductPrice(String product){
        // WebElement productPrice = Driver.getDriver().findElement(By.xpath("//a[normalize-space(.)='"+product+"']/../../h5"));
-        String actualPrice = Driver.getDriver().findElement(By.xpath("//a[normalize-space(.)='"+product+"']/../../h5")).getText();
+        String actualPrice = Driver.getDriver().findElement(By.xpath("//a[normalize-space(.)='" + product + "']/../../h5")).getText();
         return actualPrice.substring(1);
     }
 
