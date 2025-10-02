@@ -3,13 +3,11 @@ package io.loop.step_definitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.loop.pages.HomePage;
 import io.loop.pages.LoginPage;
 import io.loop.utilities.BrowsersUtils;
 import io.loop.utilities.ConfigurationReader;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
-import org.apache.poi.ss.formula.functions.T;
 
 import java.util.Map;
 
@@ -18,7 +16,6 @@ import static junit.framework.TestCase.assertTrue;
 
 public class LoginStepDefs {
     LoginPage loginPage = new LoginPage();
-    HomePage homePage = new HomePage();
 
     @Given("user is on Docuport login page")
     public void user_is_on_docuport_login_page() {
@@ -28,6 +25,8 @@ public class LoginStepDefs {
 
     @When("user enters username for client")
     public void user_enters_username_for_client() {
+        BrowsersUtils.waitForClickable(loginPage.loginButton, DocuportConstants.LARGE);
+        assertTrue("Not displayed", loginPage.loginButton.isDisplayed());
         loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_CLIENT);
     }
 
@@ -36,39 +35,52 @@ public class LoginStepDefs {
         loginPage.passwordInput.sendKeys(DocuportConstants.PASSWORD_FOR_LOGIN);
     }
 
+    @When("user clicks login button")
+    public void user_clicks_login_button() {
+        loginPage.loginButton.click();
+    }
+
     @Then("user should be able to see home page for client")
     public void user_should_be_able_to_see_home_page_for_client() throws InterruptedException {
+        Thread.sleep(2000);
+        // loginPage.continueButton.click();
 
-        Thread.sleep(3000);
-        homePage.continueButton.click();
-        Thread.sleep(3000);
-        assertTrue("Home Page is not loaded", homePage.logo.isDisplayed());
+        String header = Driver.getDriver().getTitle();
+        assertEquals("No match", "Docuport", header);
+
+        assertTrue(loginPage.homePageImg.isDisplayed());
+
     }
 
 
     @When("user enters username for employee")
     public void user_enters_username_for_employee() {
+        BrowsersUtils.waitForClickable(loginPage.loginButton, DocuportConstants.LARGE);
+        assertTrue("Not displayed", loginPage.loginButton.isDisplayed());
         loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_EMPLOYEE);
     }
 
     @When("user enters password for employee")
     public void user_enters_password_for_employee() {
-    loginPage.passwordInput.sendKeys(DocuportConstants.PASSWORD_FOR_LOGIN);
-    loginPage.loginButton.click();
+        loginPage.passwordInput.sendKeys(DocuportConstants.PASSWORD_FOR_LOGIN);
+        loginPage.loginButton.click();
     }
 
     @Then("user should be able to see home page for employee")
     public void user_should_be_able_to_see_home_page_for_employee() {
-//        String header = Driver.getDriver().getTitle();
-//        assertEquals("No match", "Docuport", header);
+        String header = Driver.getDriver().getTitle();
+        assertEquals("No match", "Docuport", header);
+
         assertTrue(loginPage.homePageImg.isDisplayed());
+
     }
+
 
     @When("user enters username for advisor")
     public void user_enters_username_for_advisor() {
-//    BrowsersUtils.waitForClickable(loginPage.loginButton, DocuportConstants.LARGE);
-//    assertTrue("Not displayed", loginPage.loginButton.isDisplayed());
-    loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_ADVISOR);
+        BrowsersUtils.waitForClickable(loginPage.loginButton, DocuportConstants.LARGE);
+        assertTrue("Not displayed", loginPage.loginButton.isDisplayed());
+        loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_ADVISOR);
     }
 
     @When("user enters password for advisor")
@@ -79,16 +91,17 @@ public class LoginStepDefs {
 
     @Then("user should be able to see home page for advisor")
     public void user_should_be_able_to_see_home_page_for_advisor() {
-//        String header = Driver.getDriver().getTitle();
-//        assertEquals("No match", "Docuport", header);
+        String header = Driver.getDriver().getTitle();
+        assertEquals("No match", "Docuport", header);
+
         assertTrue(loginPage.homePageImg.isDisplayed());
     }
 
 
     @When("user enters username for supervisor")
     public void user_enters_username_for_supervisor() {
-//        BrowsersUtils.waitForClickable(loginPage.loginButton, DocuportConstants.LARGE);
-//        assertTrue("Not displayed", loginPage.loginButton.isDisplayed());
+        BrowsersUtils.waitForClickable(loginPage.loginButton, DocuportConstants.LARGE);
+        assertTrue("Not displayed", loginPage.loginButton.isDisplayed());
         loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_SUPERVISOR);
     }
 
@@ -100,8 +113,8 @@ public class LoginStepDefs {
 
     @Then("user should be able to see home page for supervisor")
     public void user_should_be_able_to_see_home_page_for_supervisor() {
-//      String header = Driver.getDriver().getTitle();
-//        assertEquals("No match", "Docuport", header);
+        String header = Driver.getDriver().getTitle();
+        assertEquals("No match", "Docuport", header);
 
         assertTrue(loginPage.homePageImg.isDisplayed());
     }
@@ -117,7 +130,7 @@ public class LoginStepDefs {
            System.out.println("...................................");*/
 
         loginPage.loginDocuport(credentials.get("username"), credentials.get("password"));
-       }
     }
+}
 
 
