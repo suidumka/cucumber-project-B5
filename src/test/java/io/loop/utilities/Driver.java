@@ -61,6 +61,7 @@ public class Driver {
         prefs.put("autofill.credit_card_enabled", false);
 
         String browserType = ConfigurationReader.getProperties("browser");
+
         ChromeOptions options = new ChromeOptions();
 
         options.setExperimentalOption("prefs", prefs);
@@ -84,7 +85,8 @@ public class Driver {
             }
             //assert driverPool != null;
             driverPool.get().manage().window().maximize();
-            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+           // driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(DocuportConstants.LARGE));
+            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(Integer.valueOf(ConfigurationReader.getProperties("timeouts"))));
         }
         return driverPool.get();
     }
