@@ -43,7 +43,6 @@ public class LoginStepDefs {
     @Then("user should be able to see home page for client")
     public void user_should_be_able_to_see_home_page_for_client() throws InterruptedException {
         Thread.sleep(2000);
-        // loginPage.continueButton.click();
 
         String header = Driver.getDriver().getTitle();
         assertEquals("No match", "Docuport", header);
