@@ -36,7 +36,7 @@ public class SampleDocuportStepDefs {
         switch (page.trim().toLowerCase()) {
             case "login" , "choose account" -> { pages.getLoginPage().clickButton(button);
             LOG.info(button + " was successfully clicked");
-            Thread.sleep(1000);
+           // Thread.sleep(1000);
             }
             case "left navigate" -> {
                 pages.getLeftNavigatePage().clickButton(button);
@@ -52,6 +52,10 @@ public class SampleDocuportStepDefs {
             }
 
             case "upload documents" -> {
+                pages.getLeftNavigatePage().clickButton(button);
+                LOG.info(button + " was successfully clicked");
+            }
+            case "home" ->{
                 pages.getLeftNavigatePage().clickButton(button);
                 LOG.info(button + " was successfully clicked");
             }
