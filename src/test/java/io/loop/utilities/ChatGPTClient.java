@@ -9,7 +9,7 @@ import org.json.*;
 public class ChatGPTClient {
 
 
-    private static final String API_KEY = ConfigurationReader.getProperties("chatgpt.api.key");
+    //private static final String API_KEY = ConfigurationReader.getProperties("chatgpt.api.key");
     private static final String ENDPOINT = "https://api.openai.com/v1/chat/completions";
 
     public static String getResponseFromPrompt(String prompt) {
@@ -31,7 +31,7 @@ public class ChatGPTClient {
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(ENDPOINT))
-                    .header("Authorization", "Bearer " + API_KEY)
+                   // .header("Authorization", "Bearer " + API_KEY)
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(body.toString()))
                     .build();
