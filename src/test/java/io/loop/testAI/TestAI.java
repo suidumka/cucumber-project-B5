@@ -17,12 +17,12 @@ public class TestAI {
     private static final Logger log = LoggerFactory.getLogger(TestAI.class);
 
     public static void main(String[] args) {
-      //  String aiPrompt = "Generate me scenarios for www.google.com in Gherkin language, make sure to add negative ones as well";
+        String aiPrompt = "Generate me scenarios for www.google.com in Gherkin language, make sure to add negative ones as well";
          // you can read it from somewhere else as well
-        //String aiResponse = ChatGPTClient.getResponseFromPrompt(aiPrompt);
+        String aiResponse = ChatGPTClient.getResponseFromPrompt(aiPrompt);
 
         System.out.println("\n.............. •••AI Generated Suggestions Start••• ........................\n");
-      //  System.out.println(aiResponse);
+        System.out.println(aiResponse);
         System.out.println("\n.............. •••AI Generated Suggestions End••• ........................\n");
 
 
