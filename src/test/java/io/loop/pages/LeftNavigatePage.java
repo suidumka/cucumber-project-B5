@@ -36,7 +36,7 @@ public class LeftNavigatePage {
             case "upload" -> BrowsersUtils.waitForClickable(uploadButton, DocuportConstants.LARGE).click();
             case "home" -> BrowsersUtils.waitForClickable(homeButton, DocuportConstants.LARGE).click();
             case "received doc" -> BrowsersUtils.waitForClickable(receivedDocsButton, DocuportConstants.LARGE).click();
-            case "my uploads" -> BrowsersUtils.waitForClickable(myUploads, DocuportConstants.LARGE).click();
+            case "my uploads" -> BrowsersUtils.waitForClickable(myUploads, DocuportConstants.EXTRA_LARGE).click();
             case "invitations" -> BrowsersUtils.waitForClickable(invitationsButton, DocuportConstants.LARGE).click();
             case "terms and conditions" -> BrowsersUtils.waitForClickable(termsAndConditionsButton, DocuportConstants.LARGE).click();
             default -> throw new IllegalArgumentException("No such button " + button);

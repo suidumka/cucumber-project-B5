@@ -2,8 +2,13 @@ package io.loop.step_definitions;
 
 import io.cucumber.java.en.*;
 import io.loop.pages.POM;
+import io.loop.utilities.*;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+
+import java.awt.*;
 
 public class SampleDocuportStepDefs {
 
@@ -33,10 +38,42 @@ public class SampleDocuportStepDefs {
             LOG.info(button + " was successfully clicked");
             Thread.sleep(1000);
             }
-            case "left navigate" -> pages.getLeftNavigatePage().clickButton(button);
-            case "received doc" -> pages.getReceivedDocsPage().clickButton(button);
+            case "left navigate" -> {
+                pages.getLeftNavigatePage().clickButton(button);
+                LOG.info(button + " was successfully clicked");
+            }
+            case "received doc" -> {
+                pages.getReceivedDocsPage().clickButton(button);
+                LOG.info(button + " was successfully clicked");
+            }
+            case "my uploads" -> {
+                pages.getMyUploadsPage().clickButton(button);
+                LOG.info(button + " was successfully clicked");
+            }
+
+            case "upload documents" -> {
+                pages.getLeftNavigatePage().clickButton(button);
+                LOG.info(button + " was successfully clicked");
+            }
             default -> throw new IllegalArgumentException("No such button " + page);
         }
+    }
+
+    @Then("user uploads a document")
+    public void user_uploads_a_document() throws Exception {
+
+        //upload file into web page - if in HTML  I see @type='file'
+   /*     WebElement element = Driver.getDriver().findElement(By.xpath("//input[@type='file']"));
+        element.sendKeys("/Users/suidum/Desktop/test.txt");*/
+
+       // MacFileUploadHelper.uploadFileForMac("/Users/suidum/Desktop/test.txt"); // did NOT work for me
+
+       // MacFileUploadHelper.uploadFileUsingAppleScript("/Users/suidum/Desktop/test.txt");
+
+        MacFileUploadHelper.uploadFileUsingAppleScript2("/Users/suidum/Desktop/test.txt");
+        // worked after putting check mark in my mac to IntelliJ
+
+
     }
 
 }
