@@ -9,7 +9,7 @@ Feature: Practice soft assertions
     And user inserts "Group1" to "password" field on "Login" page
     And user clicks "Login" button on "Login" page
     And user validates "Choose account" text as displayed
-    And user clicks "Contunie" button on "Choose account" page
+    And user clicks "Continue" button on "Choose account" page
     And user clicks "Home" button on "Left navigate" page
     And user clicks "Invitations" button on "Left navigate" page
     And user validates all assertions
