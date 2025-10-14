@@ -74,7 +74,7 @@ public class SampleDocuportStepDefs {
 
        // MacFileUploadHelper.uploadFileUsingAppleScript("/Users/suidum/Desktop/test.txt");
 
-        MacFileUploadHelper.uploadFileUsingAppleScript2("/Users/suidum/Desktop/test.txt");
+        //MacFileUploadHelper.uploadFileUsingAppleScript2("/Users/suidum/Desktop/test.txt");
         // worked after putting check mark in my mac to IntelliJ
 
 

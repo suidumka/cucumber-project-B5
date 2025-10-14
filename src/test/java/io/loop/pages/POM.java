@@ -3,7 +3,6 @@ package io.loop.pages;
 public class POM {
 
     private LoginPage loginPage;
-    private GoogleSearchPage googleSearchPage;
     private ProductPage productPage;
     private HomePage homePage;
     private ReceivedDocsPage receivedDocsPage;
@@ -32,19 +31,11 @@ public class POM {
         return receivedDocsPage;
     }
 
-
     public LoginPage getLoginPage() {
         if (loginPage == null) {
             loginPage = new LoginPage();
         }
         return loginPage;
-    }
-
-    public GoogleSearchPage getGoogleSearchPage() {
-        if (googleSearchPage == null) {
-            googleSearchPage = new GoogleSearchPage();
-        }
-        return googleSearchPage;
     }
 
     public ProductPage getProductPage() {
